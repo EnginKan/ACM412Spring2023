@@ -1,0 +1,21 @@
+{%extends './base.html'%}
+
+
+{%block content%}
+<table class="table table-stripped">
+ {%for book in all_books%}
+    <tr>
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.isbn}}</td>
+        {% url 'bookbyid' id=book.id as the_url%}
+        <td>{{book.publication_date}}</td>
+        <td><a href="{{the_url}}"><button type="button" class="btn btn-primary">Details</button></a></td>
+
+    </tr>
+    {%empty%}
+    <tr>There is no data</tr>
+    {%endfor%}
+</table>
+
+{%endblock%}
